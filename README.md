@@ -41,7 +41,7 @@
 
 
 ## 🔆 Updates
-- **2025.01.07** 🌟 STAR is accepted by ICCV 2025!
+- **2025.06.26** 🌟 STAR is accepted by ICCV 2025!
 
 - **2025.01.19** The STAR demo is now available on [Google Colab](https://colab.research.google.com/drive/1K8A1U_BNpAteRhhW9A8pAYs6LWjItQs_?usp=sharing). Feel free to give it a try!
 
