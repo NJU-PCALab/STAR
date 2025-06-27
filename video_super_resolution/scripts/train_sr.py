@@ -2,10 +2,8 @@
 # coding=utf-8
 
 import argparse
-from copy import deepcopy
 import os
 from pathlib import Path
-os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
 import torch
 import torch.nn.functional as F
@@ -13,7 +11,6 @@ import torch.utils.checkpoint
 from accelerate import Accelerator
 from accelerate.logging import get_logger
 from accelerate.utils import ProjectConfiguration
-from packaging import version
 from tqdm.auto import tqdm
 from diffusers.optimization import get_scheduler
 from diffusers.utils import check_min_version
@@ -24,7 +21,6 @@ import torch.fft
 from typing import Tuple
 
 from video_to_video.modules import *
-from video_to_video.utils.config import cfg
 from video_to_video.diffusion.diffusion_sdedit import GaussianDiffusion
 from video_to_video.diffusion.schedules_sdedit import noise_schedule
 from video_to_video.utils.logger import get_logger
@@ -406,7 +402,7 @@ model = ControlledV2VUNet()
 load_dict = torch.load(args.pretrained_model_path, map_location='cpu')
 if 'state_dict' in load_dict:
     load_dict = load_dict['state_dict']
-# 加载状态字典
+
 incompatible_keys = model.load_state_dict(load_dict, strict=False)
 logger.info('Load model path {}, with local status {}'.format(args.pretrained_model_path, incompatible_keys))
 model_numel, model_numel_trainable = get_model_numel(model)
