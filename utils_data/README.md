@@ -9,9 +9,11 @@ bash build.sh
 
 ### Step 2: Prepare CSV File
 Create a CSV file listing the paths to ground-truth (GT) videos and their corresponding text descriptions. Use the following format:
+```
 path,text
 /xxx/xxx/dog.mp4, A dog is sitting on the couch.
 ...
+```
 
 ### Step 3: Configure Paths
 Open `make_paired_data.sh` and modify the following variables:
