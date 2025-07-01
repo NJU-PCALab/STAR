@@ -41,7 +41,7 @@
 
 
 ## 🔆 Updates
-- **2025.07.01** 🔥 Training code of I2VGen-XL version have been released.
+- **2025.07.01** 🔥 Training codes of I2VGen-XL version have been released.
 
 - **2025.06.26** 🌟 STAR is accepted by ICCV 2025!
 
