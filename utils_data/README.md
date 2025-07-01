@@ -3,9 +3,7 @@
 ### Step 1: Create the environment
 ```
 conda create -n make_data python=3.10
-
 conda activate make_data
-
 bash build.sh
 ```
 
