@@ -41,17 +41,19 @@
 
 
 ## 🔆 Updates
+- **2025.07.01** 🔥 Training code of I2VGen-XL version have been released.
+
 - **2025.06.26** 🌟 STAR is accepted by ICCV 2025!
 
-- **2025.01.19** The STAR demo is now available on [Google Colab](https://colab.research.google.com/drive/1K8A1U_BNpAteRhhW9A8pAYs6LWjItQs_?usp=sharing). Feel free to give it a try!
+- **2025.01.19** 📖 The STAR demo is now available on [Google Colab](https://colab.research.google.com/drive/1K8A1U_BNpAteRhhW9A8pAYs6LWjItQs_?usp=sharing). Feel free to give it a try!
 
-- **2025.01.09** The online demo of STAR on [Hugging Face](https://huggingface.co/spaces/SherryX/STAR) is now live! Please note that due to the duration limitation of ZeroGPU, the running time may exceed the allocated GPU duration. If you'd like to try it, you can duplicate the demo and assign a paid GPU.
+- **2025.01.09** 📖 The online demo of STAR on [Hugging Face](https://huggingface.co/spaces/SherryX/STAR) is now live! Please note that due to the duration limitation of ZeroGPU, the running time may exceed the allocated GPU duration. If you'd like to try it, you can duplicate the demo and assign a paid GPU.
 
-- **2025.01.07**  The pretrained STAR model (I2VGen-XL and CogVideoX-5B versions) and inference code have been released.
+- **2025.01.07**  🔥 The pretrained STAR model (I2VGen-XL and CogVideoX-5B versions) and inference code have been released.
 
 
 ## 📑 TODO
-- [ ] Training codes
+- [x] Training codes
 - [x] Inference codes
 - [x] Online demo
 
@@ -115,6 +117,36 @@ bash video_super_resolution/scripts/inference_sr.sh
 Refer to these [instructions](https://github.com/NJU-PCALab/STAR/tree/main/cogvideox-based#cogvideox-based-model-inference) for inference with the CogVideX-5B-based model.
 
 Please note that the CogVideX-5B-based model supports only 720x480 input.
+
+## 🌈 Training
+#### Step 1: Download the pretrained [VEnhancer](https://huggingface.co/jwhejwhe/VEnhancer/resolve/main/venhancer_v2.pt).
+
+#### Step 2: Prepare training data, structured as follows:
+```
+/dataset/
+    ├── gt/        # Ground-truth high-quality videos
+    │   ├── video1.mp4
+    │   ├── video2.mp4
+    │   └── ...
+    ├── lq/        # Low-quality input videos
+    │   ├── video1.mp4
+    │   ├── video2.mp4
+    │   └── ...
+    └── text/      # Text prompts corresponding to each video
+        ├── video1.txt
+        ├── video2.txt
+        └── ...
+```
+Follow this [instruction](https://github.com/NJU-PCALab/STAR/tree/main/utils_data) to generate training data.
+#### Step 3: Training for STAR (I2VGen-XL-based)
+```
+bash video_super_resolution/scripts/train_sr.sh
+```
+`--pretrained_model_path`: path to the pretrained VEnhancer.
+
+`--checkpointing_steps`: save a model checkpoint every N training steps.
+
+`--num_frames`: length of each training video.
 
 ## ❤️ Acknowledgments
 This project is based on [I2VGen-XL](https://github.com/ali-vilab/VGen), [VEnhancer](https://github.com/Vchitect/VEnhancer), [CogVideoX](https://github.com/THUDM/CogVideo) and [OpenVid-1M](https://github.com/NJU-PCALab/OpenVid-1M). Thanks for their awesome works.
