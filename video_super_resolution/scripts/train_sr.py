@@ -20,6 +20,10 @@ import torch.nn.functional as F
 import torch.fft
 from typing import Tuple
 
+import sys
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+sys.path.append(base_path)
+
 from video_to_video.modules import *
 from video_to_video.diffusion.diffusion_sdedit import GaussianDiffusion
 from video_to_video.diffusion.schedules_sdedit import noise_schedule
